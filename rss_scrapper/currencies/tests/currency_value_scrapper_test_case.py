@@ -13,5 +13,5 @@ class CurrencyValueScrapperTestCase(TestCase):
 
     def test_saving_new_currency_values(self):
         self.assertEqual(CurrencyValueHistory.objects.all().count(), 0)
-        self.scrapper.save_new_currency_values()
+        self.scrapper.create_new_currency_values()
         self.assertNotEqual(CurrencyValueHistory.objects.all().count(), 0)
