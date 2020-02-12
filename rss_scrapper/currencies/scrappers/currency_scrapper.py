@@ -15,7 +15,7 @@ class CurrencyScrapper:
 
     def create_currencies(self) -> None:
         for currency in self._get_currencies_data():
-            name, shortcut = self._get_currency_name_and_shortcut(currency.text)
+            name, shortcut = self.get_currency_name_and_shortcut(currency.text)
             self._create_currency(name=name, shortcut=shortcut)
 
     def _get_currencies_data(self) -> list:
@@ -25,7 +25,7 @@ class CurrencyScrapper:
         return currencies[:-1]
 
     @staticmethod
-    def _get_currency_name_and_shortcut(value) -> (str, str):
+    def get_currency_name_and_shortcut(value) -> (str, str):
         shortcut = re.findall(r'\(.*?\)', value)[0][1:][:-1]
         name = value.replace(f' ({shortcut})', '')
         return name, shortcut

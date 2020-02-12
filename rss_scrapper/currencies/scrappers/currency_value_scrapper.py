@@ -18,7 +18,7 @@ class CurrencyValueScrapper:
         root = ET.fromstring(page.content)
         return float(root[1][5][2][0].text)
 
-    def save_new_currency_value(self, currency) -> None:
+    def _save_new_currency_value(self, currency) -> None:
         value = self._get_latest_value(currency.shortcut)
         CurrencyValueHistory.objects.get_or_create(
             currency=currency,
@@ -28,7 +28,7 @@ class CurrencyValueScrapper:
 
     def save_new_currency_values(self) -> None:
         for currency in self._get_currencies():
-            self.save_new_currency_value(currency)
+            self._save_new_currency_value(currency)
 
     @staticmethod
     def _get_currencies() -> QuerySet:

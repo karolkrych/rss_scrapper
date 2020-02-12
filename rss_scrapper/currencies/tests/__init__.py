@@ -1,0 +1,2 @@
+from .currency_scrapper_test_case import CurrencyScrapperTestCase
+from .currency_value_scrapper_test_case import CurrencyValueScrapperTestCase
