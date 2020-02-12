@@ -11,6 +11,19 @@ docker-compose up
 ```
 
 ## Usage
+
+#### Getting exchange rates 
+Type this command to get into docker container
+```
+docker-compose exec web bash
+```
+then, type this, to run scrapper and create exchange rates records in your local db
+```
+cd rss_scrapper
+python manage.py run_currency_value_scrapper
+```
+
+#### Testing API 
 You can check and test API with Swagger - it's on main local address - 127.0.0.1:8000
 
 `/currencies/currencies_values/` URL contains filter `currency`, it can be used like this:
